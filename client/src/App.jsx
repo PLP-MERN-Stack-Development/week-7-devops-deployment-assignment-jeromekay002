@@ -29,6 +29,22 @@ function App() {
     }).then(() => fetchFoods());
   };
 
+  const handleEditFood = async (id, formData) => {
+    try {
+      const res = await fetch(`${API_URL}/foods/${id}`, {
+        method: "PUT",
+        body: formData,
+      });
+
+      if (!res.ok) throw new Error("Failed to update food");
+
+      fetchFoods(); // Refresh the list
+    } catch (err) {
+      console.error(err);
+      alert("Update failed.");
+    }
+  };
+
 
   const deleteFood = (id) => {
     fetch(`${API_URL}/foods/${id}`, {
@@ -42,7 +58,7 @@ function App() {
       <FoodForm onAddFood={addFood} />
       <section className="mt-10 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {foods.map((food) => (
-          <FoodCard key={food._id} food={food} onDelete={deleteFood} />
+          <FoodCard key={food._id} food={food} onDelete={deleteFood} onEdit={handleEditFood} />
         ))}
       </section>
       <Footer />
