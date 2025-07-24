@@ -11,10 +11,21 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 // Middlewares
+const allowedOrigins = [
+  'https://week-7-devops-deployment-assignment-topaz-eight.vercel.app',
+  'https://week-7-devops-deployment-git-d3abf5-jerome-s-projects-1189e974.vercel.app'
+];
 app.use(cors({
-  origin: "https://week-7-devops-deployment-assignment-topaz-eight.vercel.app/",
-  credentials: true // only if needed
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
+
+
 app.use(express.json());
 app.use(helmet());
 app.use(morgan('combined'));
