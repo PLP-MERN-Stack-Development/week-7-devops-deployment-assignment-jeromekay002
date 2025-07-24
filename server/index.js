@@ -40,14 +40,13 @@ app.use(
     },
   })
 );
+// Import and use routes
+app.use('/foods', foodRoutes);
 
 // MongoDB (mongoose) connect
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log("✅ MongoDB Atlas Connected Successfully");
-
-    // Import and use routes
-    app.use('/foods', foodRoutes);
 
     app.listen(PORT, () => {
       console.log(`🚀 Server is running at http://localhost:${PORT}`);
@@ -56,6 +55,11 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => {
     console.error('❌ Mongo connection error:', err);
   });
+  
+// Health Check Endpoints (Backend)
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'UP' });
+});
 
 // Global Error Handler
 app.use((err, req, res, next) => {

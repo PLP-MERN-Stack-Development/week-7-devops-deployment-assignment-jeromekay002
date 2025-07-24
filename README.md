@@ -76,3 +76,24 @@ Your work will be automatically submitted when you push to your GitHub Classroom
 - [Railway Documentation](https://docs.railway.app/)
 - [Vercel Documentation](https://vercel.com/docs)
 - [Netlify Documentation](https://docs.netlify.com/) 
+
+## 🚀 Deployed Applications
+Frontend:
+[https://week-7-devops-deployment-assignment-topaz-eight.vercel.app/]
+
+Backend (API):
+[https://my-express-backend-qi9j.onrender.com]
+
+## 🔄 CI/CD Pipeline
+CI/CD via GitHub Actions
+
+GitHub Actions triggers on every git push to the main branch.
+
+Pipeline runs linting, testing, and deployment via Render.
+
+## 📊 Monitoring Setup
+Tools Used:
+
+🛠 Render Dashboard Monitoring (live logs + deploy history)
+
+🧪 Health check endpoint: /health returns { status: "UP" } to confirm service is live

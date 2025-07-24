@@ -7,7 +7,7 @@ function FoodCard({ food, onDelete, onEdit }) {
     const [image, setImage] = useState(null);
 
     const imageUrl = food.image
-        ? `http://localhost:4000/uploads/${food.image}`
+        ? `${import.meta.env.VITE_API_URL}/uploads/${food.image}`
         : null;
 
     const handleEditSubmit = async (e) => {
