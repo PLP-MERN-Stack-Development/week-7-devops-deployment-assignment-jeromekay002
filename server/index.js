@@ -12,8 +12,8 @@ const PORT = process.env.PORT || 4000;
 
 // Middlewares
 app.use(cors({
-  origin: "http://localhost:5173", // your frontend
-  credentials: true,
+  origin: "https://week-7-devops-deployment-assignment-topaz-eight.vercel.app/",
+  credentials: true // only if needed
 }));
 app.use(express.json());
 app.use(helmet());
